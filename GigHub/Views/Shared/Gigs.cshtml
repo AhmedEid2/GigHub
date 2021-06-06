@@ -1,0 +1,103 @@
+﻿@model  GigHub.ViewModels.GigsViewModel
+@{
+    ViewBag.Title = Model.Heading;
+}
+
+<h3>@Model.Heading</h3>
+
+@using (Html.BeginForm("Search", "Gigs"))
+{
+    <div class="form-group">
+        <div class="input-group" id="searchGigs">
+            @Html.TextBoxFor(g => g.SearchTerm, new { @class = "form-control" })
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-search"></i>
+            </span>
+        </div>
+    </div>
+}
+
+<ul class="gigs voffset4">
+    @foreach (var gig in Model.UpComingGigs)
+    {
+        <li>
+            <div class="date">
+                <div class="month">
+                    @gig.DateTime.ToString("MMM")
+                </div>
+                <div class="day">
+                    @gig.DateTime.ToString("d ")
+                </div>
+            </div>
+            <div class="details">
+                <span class="artist">
+
+                    @gig.Artist.Name
+                    @if (gig.IsCanceled)
+                    {
+                        <span class="label label-warning">Canceled</span>
+                    }
+                    @if (Model.ShowActions)
+                    {
+                        <button data-user-id="@gig.ArtistId" class="btn btn-link btn-sm js-toggle-follow">Follow</button>
+                    }
+                </span>
+                <span class="genre">
+                    @gig.Genre.Name
+
+                    @if (Model.ShowActions && !gig.IsCanceled)
+                    {
+                        <button data-gig-id="@gig.Id" class="btn btn-default btn-sm pull-right js-toggle-attendence">Going?</button>
+                    }
+                </span>
+
+            </div>
+        </li>
+    }
+</ul>
+
+@*Script for acting with Api Post method*@
+@section scripts
+{
+    <script>
+        // this document.ready is the default to start JQuery code
+        $(document).ready(function () {
+
+            // Here first we add a class to the button and use this class to enable accessing it
+            $(".js-toggle-attendence").click(function (e) {
+
+                //e.target for catching our button
+                var button = $(e.target)
+
+                /*post method is for posting the data and takes two attributes one for the URL and the second for the parameter 
+                that the post method in the Api has*/
+                $.post("/Api/Attendences", { GigId: button.attr("data-gig-id") })
+                    .done(function () {               //done method is in case the post method will done
+                        button
+                            .removeClass("btn-default")
+                            .addClass("btn-info")
+                            .text("Going")
+                    })
+                    .fail(function () {    //fail method is in case the post method will fail
+
+                        alert("Something Failed!")
+                    });
+            });
+
+            $(".js-toggle-follow").click(function (e) {
+                var button = $(e.target)
+                $.post("/Api/Followings", { FolloweeId: button.attr("data-user-id") })
+                    .done(function ()
+                    {
+                        button
+                            .text("Following")
+                    })
+                    .fail(function () {
+                        alert("Something failed!")
+                    });
+            });
+        });
+    </script>        
+
+    
+}

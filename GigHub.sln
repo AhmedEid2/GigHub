@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GigHub", "GigHub\GigHub.csproj", "{E256A21B-85FB-4B43-B7B6-8C2898FC37D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GigHub.Tests", "GigHub.Tests\GigHub.Tests.csproj", "{254F228A-3F36-4475-910F-80E35D8FFCFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E256A21B-85FB-4B43-B7B6-8C2898FC37D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E256A21B-85FB-4B43-B7B6-8C2898FC37D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E256A21B-85FB-4B43-B7B6-8C2898FC37D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E256A21B-85FB-4B43-B7B6-8C2898FC37D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{254F228A-3F36-4475-910F-80E35D8FFCFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{254F228A-3F36-4475-910F-80E35D8FFCFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{254F228A-3F36-4475-910F-80E35D8FFCFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{254F228A-3F36-4475-910F-80E35D8FFCFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30F25538-23A1-4081-820C-7E3EA1B02329}
+	EndGlobalSection
+EndGlobal
